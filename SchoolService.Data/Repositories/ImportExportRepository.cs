@@ -11,6 +11,7 @@ namespace SchoolService.Data.Repositories
         //------Definition Private Functions Model -------------//
         IList<ImportExport> GetActiveUsers();
 
+
     }
     public class ImportExportRepository : Repository<ImportExport>, IUserRepository
     {

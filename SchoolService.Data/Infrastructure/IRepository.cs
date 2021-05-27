@@ -5,24 +5,25 @@ using System.Threading.Tasks;
 
 namespace SchoolService.Data.Infrastructure
 {
-   public interface IRepository<TEntity> where TEntity : class
-   {
-       //-------Definition Public Functions Models-----------//
-       void Insert(TEntity entity);
-       void Update(TEntity entity);
+    public interface IRepository<TEntity> where TEntity : class
+    {
+        //-------Definition Public Functions Models-----------//
+        void Insert(TEntity entity);
+        void Update(TEntity entity);
 
-       void Delete(object Id);
-       void Delete(TEntity entity);
-       void Delete(Expression<Func<TEntity, bool>> where); //lambda expression
+        void Delete(object Id);
+        void Delete(TEntity entity);
+        void Delete(Expression<Func<TEntity, bool>> where); //lambda expression
 
-       TEntity GetById(object Id);
-       IEnumerable<TEntity> GetAll();
-       TEntity Get(Expression<Func<TEntity, bool>> where);
-       IEnumerable<TEntity> GetMany(Expression<Func<TEntity, bool>> where);
+        TEntity GetById(object Id);
+        IEnumerable<TEntity> GetAll();
+        TEntity Get(Expression<Func<TEntity, bool>> where);
+        IEnumerable<TEntity> GetMany(Expression<Func<TEntity, bool>> where);
 
-       //---------------Async Functions----------------//
-       Task<List<TEntity>> GetAllAsync();
-       Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> where);
-       Task<List<TEntity>> GetManyAsync(Expression<Func<TEntity, bool>> where);
-   }
+        //---------------Async Functions----------------//
+        Task<List<TEntity>> GetAllAsync();
+        Task<TEntity> GetFirstOrDefaultAsync(Expression<Func<TEntity, bool>> where);
+        Task<TEntity> GetSingleOrDefaultAsync(Expression<Func<TEntity, bool>> where);
+        Task<List<TEntity>> GetManyAsync(Expression<Func<TEntity, bool>> where);
+    }
 }

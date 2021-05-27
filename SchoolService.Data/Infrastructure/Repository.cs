@@ -62,9 +62,14 @@ namespace SchoolService.Data.Infrastructure
             return await dbSet.ToListAsync();
         }
 
-        public async Task<TEntity> GetAsync(Expression<Func<TEntity, bool>> where)
+        public async Task<TEntity> GetFirstOrDefaultAsync(Expression<Func<TEntity, bool>> where)
         {
             return await dbSet.Where(where).FirstOrDefaultAsync();
+        }
+
+        public async Task<TEntity> GetSingleOrDefaultAsync(Expression<Func<TEntity, bool>> where)
+        {
+            return await dbSet.Where(where).SingleOrDefaultAsync();
         }
 
         public TEntity GetById(object Id)
