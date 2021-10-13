@@ -4,8 +4,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using SchoolService.Data;
-using SchoolService.Data.Infrastructure;
+
+using SchoolService.Infrastructure;
 using SchoolService.Models.Entities;
 
 namespace SchoolService.Controllers

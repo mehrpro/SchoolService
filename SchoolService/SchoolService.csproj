@@ -20,9 +20,4 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\SchoolService.Data\SchoolService.Data.csproj" />
-    <ProjectReference Include="..\SchoolService.Models\SchoolService.Models.csproj" />
-  </ItemGroup>
-
 </Project>

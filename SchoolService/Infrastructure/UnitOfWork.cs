@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using SchoolService.Data.Repositories;
+using SchoolService.Repositories;
 
-namespace SchoolService.Data.Infrastructure
+namespace SchoolService.Infrastructure
 {
     public class UnitOfWork<TContext> : IUnitOfWork<TContext> where TContext : DbContext, new()
 

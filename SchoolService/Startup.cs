@@ -1,10 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using SchoolService.Data;
-using SchoolService.Data.Infrastructure;
+
+using SchoolService.Infrastructure;
 
 namespace SchoolService
 {
@@ -21,9 +22,13 @@ namespace SchoolService
         public void ConfigureServices(IServiceCollection services)
         {
 
+            services.ConfigCores();
+            services.ConfigIISIntegration();
+            services.ConfigRepository();
+
             services.AddControllers();
 
-            services.AddTransient<UnitOfWork<ApplicationContext>>();
+
 
         }
 
@@ -35,6 +40,11 @@ namespace SchoolService
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors("CorsPolicy");
+            app.UseForwardedHeaders(new ForwardedHeadersOptions()
+            {
+                ForwardedHeaders = ForwardedHeaders.All
+            });
             app.UseHttpsRedirection();
 
             app.UseRouting();
